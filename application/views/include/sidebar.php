@@ -100,8 +100,8 @@
                 else
                 {
                 ?>
-                    <li class="<?= @$profil_act ?>">
-                        <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-paw"></i><span> Penjahit</span></a>
+                    <li class="<?= @$pemesanan_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>pemesanan"><i class="menu-icon fa fa-paw"></i><span> Penjahit</span></a>
                     </li>
                     <li class="<?= @$profil_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-shopping-bag"></i><span> Lapak Kain</span></a>
