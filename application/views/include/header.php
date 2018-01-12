@@ -25,11 +25,18 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
     
+    <!-- Datepicker -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+    
 	<!-- Color Picker -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/color-switcher/color-switcher.css">
     
     <!-- X-Editable -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/x-editable/bootstrap3-editable/css/bootstrap-editable.css">
+    
+    <!-- Dropify -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/dropify/css/dropify.min.css">
+    
     <link id="custom-color-themes" rel="stylesheet" href="<?= base_url() ?>assets/styles/color/green.css ">
 </head>
 

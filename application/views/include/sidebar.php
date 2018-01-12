@@ -12,7 +12,7 @@
 ?>
 <div class="main-menu">
 	<header class="header">
-		<a href="#" class="logo"> SI-KONFEKSI</a>
+		<a href="#" class="logo"> SI-KONVEKSI</a>
 		<button type="button" class="button-close fa fa-times js__menu_close"></button>
 		<div class="user">
 			<a href="#" class="avatar">
@@ -65,9 +65,21 @@
 
                         case"3":
                     ?>
+                    <!--<li class="<?= @$jasa_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>jasa"><i class="menu-icon fa fa-crosshairs"></i><span>Jasa Jahit </span>&nbsp;<span class="badge notice-purple" id="order_count"></span></a>
+                    </li>-->
+                    <li class="<?= @$jasa_act ?>">
+                        <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-flag"></i><span>Jasa Jahit</span><span class="menu-arrow fa fa-angle-down"></span></a>
+                        <ul class="sub-menu js__content">
+                            <li><a href="<?= base_url()?>JasaKustom"><i class="fa fa-american-sign-language-interpreting"></i> Jahit Kustom</a></li>
+                            <li><a href="<?= base_url()?>JasaModel"><i class="fa fa-cart-arrow-down"></i> Jahit Model</a></li>
+                        </ul>
+                        <!-- /.sub-menu js__content -->
+                    </li>
                     <li class="<?= @$orderan_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>order"><i class="menu-icon fa fa-code"></i><span>Orderan Jahit</span>&nbsp;<span class="badge notice-purple" id="order_count"></span></a>
                     </li>
+                    
                     <li class="<?= @$progress_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>order/progress"><i class="menu-icon fa fa-spinner"></i><span>On-Progress Orderan</span>&nbsp;<span class="badge notice-purple" id="ready_count"></span></a>
                     </li>
@@ -90,6 +102,22 @@
 
                         case"5":
                     ?>
+                    <li class="<?= @$pemesanan_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>pemesanan/penjahit"><i class="menu-icon fa fa-paw"></i><span> Penjahit</span></a>
+                    </li>
+                    <li class="<?= @lapak_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-shopping-bag"></i><span> Lapak Kain</span></a>
+                    </li>
+                    <li class="<?= @lapak_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-shopping-basket"></i><span> Pesanan Anda</span></a>
+                    </li>
+                    <li class="<?= @lapak_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-check-square-o"></i><span> Pesanan Diterima</span></a>
+                    </li>
+                    <li class="<?= @lapak_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-ban"></i><span> Pesanan Ditolak</span></a>
+                    </li>
+                    
                     <li class="<?= @$profil_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-user"></i><span>Profil Anda</span> &nbsp;<span class="badge notice-yellow" id="profil_allert"><i class="fa fa-exclamation" aria-hidden="true"></i></span></a>
                     </li>
@@ -101,7 +129,7 @@
                 {
                 ?>
                     <li class="<?= @$pemesanan_act ?>">
-                        <a class="waves-effect" href="<?= base_url()?>pemesanan"><i class="menu-icon fa fa-paw"></i><span> Penjahit</span></a>
+                        <a class="waves-effect" href="<?= base_url()?>pemesanan/penjahit"><i class="menu-icon fa fa-paw"></i><span> Penjahit</span></a>
                     </li>
                     <li class="<?= @$profil_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-shopping-bag"></i><span> Lapak Kain</span></a>

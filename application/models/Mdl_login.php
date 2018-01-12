@@ -6,12 +6,14 @@ class Mdl_login extends CI_Model {
     {
         $username   = $this->input->post('user');
         $nama       = $this->input->post('nama');
+        $waktu      = date("Y-m-d");
         $password   = md5($this->input->post('pass'));
         
         $barang = array(
             'nama'          => $nama,
             'user'          => $username,
             'pass'          => $password,
+            'waktu'         => $waktu,
             'level'         => '5'
         );
         

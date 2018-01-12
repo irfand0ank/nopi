@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 
 	<title>Home</title>
-	<link rel="stylesheet" href="<?= base_url() ?>assets/styles/style.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/styles/style.css">
 
 	<!-- Waves Effect -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/waves/waves.min.css">
@@ -42,6 +42,7 @@
 			
 			<!-- /.clearfix -->
 			<button type="submit" class="frm-submit">Login<i class="fa fa-arrow-circle-right"></i></button>
+			<a href="<?= base_url()?>" class="frm-back">Kembali<i class="fa fa-arrow-circle-left"></i></a>
 			<!-- /.row -->
 			<a href="<?= base_url()?>login/regis" class="a-link"><i class="fa fa-key"></i>Belum Ada Akun ? Register.</a>
 			<div class="frm-footer"><strong>Copyright &copy;  </strong> All rights reserved.</div>

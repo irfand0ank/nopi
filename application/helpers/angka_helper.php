@@ -15,32 +15,40 @@ if ( ! function_exists('rupiah'))
 		return "Rp.".number_format($angka,2,",",".");
 	}
 }
-
-if ( ! function_exists('nilai_akhir'))
+if ( ! function_exists('format_sql'))
 {
-	function nilai_akhir($pilgan,$esay)
+	function format_sql($angka)
 	{
-        $nilai = ($pilgan + $esay)/2;
-        if ($nilai <= 55) {
-               return $nilai.' / E';
-            } else if ($nilai >= 55 && $nilai <= 59) {
-               return $nilai.' / D';
-            } else if ($nilai >= 60 && $nilai <= 64) {
-               return $nilai.' / C-';
-            }else if ($nilai >= 65 && $nilai <= 69) {
-               return $nilai.' / C';
-            } else if ($nilai >= 70 && $nilai <= 74) {
-               return $nilai.' / C+';
-            }else if ($nilai >= 75 && $nilai <= 79) {
-               return $nilai.' / B-';
-            } else if ($nilai >= 80 && $nilai <= 84) {
-               return $nilai.' / B';
-            } else if ($nilai >= 85 && $nilai <= 89) {
-               return $nilai.' / B+';
-            } else if ($nilai >= 90 && $nilai <= 94) {
-               return $nilai.' / A-';
-            } else if ($nilai >= 95 && $nilai <= 100) {
-               return $nilai.' / A';
-            }
+		return  number_format($angka,2,',','.');
 	}
 }
+
+
+
+if ( ! function_exists('rating'))
+{
+	function rating($nilai)
+	{
+        if ($nilai == 5) 
+        {
+            return '<i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i>';
+        }
+        else if ($nilai >= 4 && $nilai <= 5) 
+        {
+            return '<i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star"></i>';
+        } 
+        else if ($nilai >= 3 && $nilai <= 4) 
+        {
+            return '<i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star "></i> <i class="fa fa-star"></i>';
+        }
+        else if ($nilai >= 2 && $nilai <= 3) 
+        {
+            return '<i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star "></i> <i class="fa fa-star "></i> <i class="fa fa-star "></i>';
+        } 
+        else  
+        {
+            return '<i class="fa fa-star text-warning"></i> <i class="fa fa-star "></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star "></i>';
+        }
+	}
+}
+

@@ -10,25 +10,77 @@ class Mdl_pemesanan extends CI_Model{
        
     }
     
-    public function KategoriJson()
+    public function GetPenjahit()
     {
-        header("Content-Type: application/json");
         
-        $res= $this->db->query(" SELECT * from kategori ");
+        $res= $this->db->query(" SELECT 
+                                rating.member, 
+                                AVG(rating.rating) as nilai_member,
+                                users.`user`,users.foto,users.nama,
+                                regis_penjahit.moto,regis_penjahit.jasa
+                                 FROM
+                                 rating,users,regis_penjahit
+                                WHERE 
+                                users.`no` = rating.member 
+                                AND
+                                users.`level` = '3'
+                                GROUP BY member 
+                                ORDER BY nilai_member DESC ");
         
         
              
-         $tes = $res->result();
+        return  $res->result();
         
-         $return_arr = [];
-          foreach($tes as $line)
-          {
-              $groups[]=['value'=>$line->no,'text'=>$line->kategori];
-          }
-        
-        echo json_encode($groups,JSON_UNESCAPED_UNICODE);
-       
     }
+    
+    
+    public function GetKategori($member)
+    {
+        
+        $res= $this->db->query(" SELECT DISTINCT kode_kategori from jasa_jahit where id_penjahit = '$member' ");
+        
+        
+             
+        return  $res->result();
+        
+    }
+    
+    public function GetJasaJahit($penjahit)
+    {
+        
+        $query= $this->db->query(" SELECT * from jasa_jahit where id_penjahit = '$penjahit' ");
+        
+        
+             
+        $res = $query->num_rows();
+        return $res ;
+        
+    }
+    
+    public function DataJasa($limit,$offset,$penjahit){
+        if($offset == null)
+        {
+            $where = $limit;
+        }
+        else
+        {
+            $where = $limit.",".$offset;
+        }
+        
+        
+        $query = $this->db->query("
+            SELECT *
+             FROM
+             jasa_jahit
+            WHERE 
+            id_penjahit = '$penjahit'
+            ORDER BY no DESC
+            LIMIT $where
+        ");
+        
+        
+        return $query->result();
+	}
     
     public function simpan()
     {

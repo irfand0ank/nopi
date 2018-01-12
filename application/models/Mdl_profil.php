@@ -81,4 +81,7 @@ class Mdl_profil extends CI_Model{
     /*9*/
     
     
+    
+    
+    
 }

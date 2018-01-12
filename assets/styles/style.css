@@ -716,7 +716,7 @@ h4 strong {
 }
 /* Background colors */
 .bg-custom {
-  background-color: #71b6f9 !important;
+  background-color: #71b6f9 !important; 
 }
 .bg-primary {
   background-color: #304ffe !important;
@@ -1110,10 +1110,10 @@ Version 2.0
   visibility: visible;
 }
 .user .avatar {
-  max-width: 70px;
+  max-width: 100px;
   position: absolute;
   top: 19px;
-  left: 20px;
+  left: 40px;
 }
 .user .avatar img {
   border: 3px solid #d7ecfb;
@@ -3916,14 +3916,33 @@ table.focus-on tbody tr.focused td {
   color: #ffffff;
   margin-bottom: 15px;
 }
+.frm-single .frm-back {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border: none;
+  background: #7fc132;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 7px ;
+}
+
 @media (min-width: 1025px) {
   .frm-single .frm-submit:hover {
     background: #1e3ded;
   }
+    .frm-single .frm-back:hover {
+    background: #73b921;
+  }
+    
 }
 .frm-single .frm-submit i {
   margin-left: 5px;
+}.frm-single .frm-back i {
+  margin-left: 5px;
 }
+
 .frm-single .frm-footer {
   padding: 20px 0px 0px 0px;
   margin-top: 15px;

@@ -6,6 +6,7 @@
                     <h4 class="box-title"><?= $title ?></h4>    
                 </div>
                 
+
             <div class="col-xs-12">
                 <div class="box-content">
 					<!-- /.box-title -->
@@ -62,8 +63,8 @@
                                         elseif($info->setuju_jahit == 'W')
                                         {
                                       ?>
-                                      <a  href='#' class='btn btn-info btn-xs ' style='text-decoration: none;'><i class='fa fa-ellipsis-h'></i> Tunggu 
-                                      </a
+                                      <a  href='#' class='btn btn-info btn-xs ' style='text-decoration: none;'><i class='fa fa-spinner'></i> Tunggu 
+                                      </a>
                                     <?php  
                                         }
                                       ?>

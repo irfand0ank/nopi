@@ -13,6 +13,16 @@ if ( ! function_exists('tgl_indo'))
 	}
 }
 
+if ( ! function_exists('tgl_sql'))
+{
+	function tgl_sql($tgl)
+	{
+		$pecah = explode("/",$tgl);
+        
+		return $pecah[2].'-'.$pecah[1].'-'.$pecah[0];
+	}
+}
+
 
 if ( ! function_exists('bulan'))
 {
@@ -225,6 +235,32 @@ if ( ! function_exists('durasi_waktu'))
         
     
 		return $durasi;
+	}
+}
+
+
+
+if ( ! function_exists('selisih_hari'))
+{
+	function selisih_hari($waktu1,$waktu2)
+	{
+		//$date = date("Y-m-d");
+        $awal       = strtotime($waktu1);
+        $akhir      = strtotime($waktu2); // Waktu sekarang
+        $diff       = $akhir - $awal;
+       
+        $jarak      = floor($diff / (60 * 60 * 24)); // Jarak anda dalam hitungan hari
+        
+        /*$split      = explode('-',$waktu);
+        
+        $date2      = date_create($split[2]."-".$split[1]."-".$split[0]." ".$jam);
+        
+        $range_time = date_add($date2, date_interval_create_from_date_string(($durasi)." minutes"));
+
+        $durasi     = date_format($date2, 'Y-m-d H:i:s');*/
+        
+    
+		return $jarak;
 	}
 }
 

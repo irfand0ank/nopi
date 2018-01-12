@@ -93,6 +93,94 @@ class Mdl_query extends CI_Model{
         return $level ;
      }
     
+    public function DataPages($level,$limit,$offset){
+        if($offset == null)
+        {
+            $where = $limit;
+        }
+        else
+        {
+            $where = $limit.",".$offset;
+        }
+        
+        
+        $query = $this->db->query("
+            SELECT 
+            rating.member, 
+            AVG(rating.rating) as nilai_member,
+            users.`user`,users.foto,users.nama,users.waktu,
+            regis_penjahit.moto,regis_penjahit.jasa
+             FROM
+             rating,users,regis_penjahit,jasa_jahit
+            WHERE 
+            users.`no` = rating.member 
+            AND
+            users.`no` = jasa_jahit.id_penjahit 
+            AND
+            regis_penjahit.id_users = users.`no`
+            AND
+            users.`level` = '$level'
+            GROUP BY member 
+            ORDER BY nilai_member DESC
+            LIMIT $where
+        ");
+        
+        
+        return $query->result();
+	}
+    
+    public function GetTotalRows($level)
+    {
+        $query =    $this->db->query(" SELECT 
+                    rating.member, 
+                    AVG(rating.rating) as nilai_member,
+                    users.`user`,users.foto,users.nama,users.waktu,
+                    regis_penjahit.moto,regis_penjahit.jasa
+                     FROM
+                     rating,users,regis_penjahit,jasa_jahit
+                    WHERE 
+                    users.`no` = rating.member 
+                    AND
+                    users.`no` = jasa_jahit.id_penjahit 
+                    AND
+                    regis_penjahit.id_users = users.`no`
+                    AND
+                    users.`level` = '$level'
+                    GROUP BY member 
+                    ORDER BY nilai_member DESC");
+                 
+        $res = $query->num_rows();
+        return $res ;
+    }
+    
+    public function ReadKategori($kode)
+    {
+        
+        
+        $query =    $this->db->query(" Select * From kategori where no in ($kode)");
+                 
+       return $res = $query->result();
+    }
+    
+    
+    public function ReadNotKategori($kode)
+    {
+        if($kode == null)
+        {
+            $query =    $this->db->query(" Select * From kategori ");
+        }
+        else
+        {
+            $query =    $this->db->query(" Select * From kategori where no not in ($kode)");
+
+        }
+            
+        
+                 
+       return $res = $query->result();
+    }
+    
+    
     
     
     public function GetDataUser($table)

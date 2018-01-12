@@ -10,7 +10,32 @@ class Mdl_order extends CI_Model{
        
     }
     
-     public function ReadOrder($akun,$setuju_jahit)
+    public function TerimaOrder()
+    {
+        $mulai          = tgl_sql($this->input->post('waktu_mulai'));
+        $selesai        = tgl_sql($this->input->post('waktu_selesai'));
+        $no             = $this->input->post('no');
+        
+        $data = array(
+            'mulai'         => $mulai,
+            'selesai'       => $selesai,
+            'setuju_jahit'  => 'W',
+        );
+        
+        $where = array(
+                    'no'   => $no,
+                );  
+
+        $this->db->Update('pesanan',$data,$where);
+        
+        redirect('order');
+        
+    }
+    
+    
+    
+    
+    public function ReadOrder($akun,$setuju_jahit)
     {
         $data = array(
             'baca'          => 'T',
@@ -24,26 +49,13 @@ class Mdl_order extends CI_Model{
         $this->db->Update('pesanan',$data,$where);
     }
     
-    /*public function ReadOrderTrue($akun)
-    {
-        $data = array(
-            'baca'          => 'T',
-        );
-        
-        $where = array(
-                    'id_penjahit' => $akun,
-                     'setuju_jahit'  => 'T',   
-                );  
-
-        $this->db->Update('pesanan',$data,$where);
-    }*/
     
     
     public function GetDataPesanan($akun,$setuju_jahit)
     {
         if(is_null($setuju_jahit))
         {
-            $res = $this->db->query("SELECT * FROM pesanan WHERE baca = 'T' and id_penjahit ='$akun' and setuju_jahit is null order by no desc");
+            $res = $this->db->query("SELECT * FROM pesanan WHERE baca = 'T' and id_penjahit ='$akun' and setuju_jahit is null  or setuju_jahit = 'w'  order by no desc");
         }
         else
         {

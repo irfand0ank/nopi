@@ -25,7 +25,7 @@ class Order extends CI_Controller {
         $this->Mdl_order->ReadOrder($this->akun,null);
         $data['result']         = $this->Mdl_order->GetDataPesanan($this->akun,null);
         
-        
+       // echo $this->db->last_query();
 		$this->load->view('include/template',$data);
 	}
     
@@ -96,6 +96,9 @@ class Order extends CI_Controller {
 		$this->load->view('include/template',$data);
 	}
     
-    
+    public function terima()
+    {
+        $this->Mdl_order->TerimaOrder();
+    }
     
 }

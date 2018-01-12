@@ -31,8 +31,24 @@
 	<script src="<?= base_url() ?>assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
 	<script src="<?= base_url() ?>assets/scripts/datatables.demo.min.js"></script>
 
+    
+    <!-- Datepicker -->
+	<script src="<?= base_url() ?>assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <!--Jquery-Maskmoney -->
+    <script src="<?= base_url() ?>assets/plugin/Jquery-Maskmoney/src/jquery.maskMoney.js"></script>
+
+	<!-- Demo Scripts -->
+	<script src="<?= base_url() ?>assets/scripts/form.demo.js"></script>
+
 	<!-- X-Editable -->
 	<script src="<?= base_url() ?>assets/plugin/x-editable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+
+    <!-- Dropify -->
+	<script src="<?= base_url() ?>assets/plugin/dropify/js/dropify.min.js"></script>
+	<script src="<?= base_url() ?>assets/scripts/fileUpload.demo.min.js"></script>
+
 
 	<script src="<?= base_url() ?>assets/scripts/main.min.js"></script>
 	<script src="<?= base_url() ?>assets/scripts/style.js"></script>

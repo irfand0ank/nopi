@@ -99,19 +99,31 @@
 	// Date Picker
 	if ($("#datepicker").length)
 		$('#datepicker').datepicker();
+    
+    if ($("#datepicker2").length)
+		$('#datepicker2').datepicker();
+    
+    
 
 	if ($("#datepicker-autoclose").length)
 		$('#datepicker-autoclose').datepicker({
+            format: "dd/mm/yyyy",
 			autoclose: true,
 			todayHighlight: true
 		});
-
+    if ($("#datepicker2-autoclose2").length)
+		$('#datepicker2-autoclose2').datepicker({
+            format: "dd/mm/yyyy",
+			autoclose: true,
+			todayHighlight: true
+		});
+    
 	if ($("#datepicker-inline").length)
 		$('#datepicker-inline').datepicker();
 
 	if ($("#datepicker-multiple-date").length)
 		$('#datepicker-multiple-date').datepicker({
-			format: "mm/dd/yyyy",
+			format: "dd/mm/yyyy",
 			clearBtn: true,
 			multidate: true,
 			multidateSeparator: ","
@@ -119,6 +131,7 @@
 
 	if ($("#date-range").length)
 		$('#date-range').datepicker({
+            format: "dd/mm/yyyy",
 			toggleActive: true
 		});
 
@@ -135,7 +148,7 @@
 	if ($(".input-daterange-timepicker").length)
 		$('.input-daterange-timepicker').daterangepicker({
 			timePicker: true,
-			format: 'MM/DD/YYYY h:mm A',
+			format: 'DD/MM/YYYY h:mm A',
 			timePickerIncrement: 30,
 			timePicker12Hour: true,
 			timePickerSeconds: false,
@@ -146,7 +159,7 @@
 
 	if ($(".input-limit-datepicker").length)
 		$('.input-limit-datepicker').daterangepicker({
-			format: 'MM/DD/YYYY',
+			format: 'DD/MM/YYYY',
 			minDate: '06/01/2016',
 			maxDate: '06/30/2016',
 			buttonClasses: ['btn', 'btn-sm'],
@@ -158,10 +171,10 @@
 		});
 
 	if ($("#reportrange").length){
-		$('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+		$('#reportrange span').html(moment().subtract(29, 'days').format('D MMMM , YYYY') + ' - ' + moment().format('D MMMM , YYYY'));
 
 		$('#reportrange').daterangepicker({
-			format: 'MM/DD/YYYY',
+			format: 'DD/MM/YYYY',
 			startDate: moment().subtract(29, 'days'),
 			endDate: moment(),
 			minDate: '01/01/2016',
@@ -200,7 +213,7 @@
 			}
 		}, function (start, end, label) {
 			console.log(start.toISOString(), end.toISOString(), label);
-			$('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+			$('#reportrange span').html(start.format('D MMMM , YYYY') + ' - ' + end.format('D MMMM , YYYY'));
 		});
 	}
 

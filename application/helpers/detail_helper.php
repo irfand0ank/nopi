@@ -21,25 +21,6 @@ if ( ! function_exists('GetKomoditi'))
     
 }
 
-if ( ! function_exists('GetKab'))
-{
-	 function GetKab($kode)
-    {
-         $ci =& get_instance();
-        $res = $ci->db->query("
-            SELECT *
-            from kabupaten
-            WHERE no='$kode'"
-        
-       );
-             
-         $hasil =  $res->result_array();
-        
-        return $hasil[0]['kab'];
-     }
-    
-}
-
 
 if ( ! function_exists('GetKec'))
 {
