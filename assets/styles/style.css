@@ -2310,7 +2310,7 @@ Version 2.0
 .dataTables_wrapper .dataTables_paginate .pagination .paginate_button {
   padding: 0px;
   min-width: 0px;
-  margin-left: 10px;
+/*  margin-left: 10px;*/
   border: none !important;
   background: none !important;
 }

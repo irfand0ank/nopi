@@ -191,6 +191,48 @@
           waitForCancelOrder(); 
           
         /*batas hitung orderan yg dibatalkan*/
+        
+        /*hitung temp pesanan jahit & kain*/
+        
+        function total_order(type, msg3)
+          {
+             //alert(msg2);
+              $('#total_count').html(msg3);
+              if(msg3 < 1){
+                  //alert('ada');
+                  $("#total_count").hide();
+              }else if(msg3 >= 1){
+                  $("#total_count").show();
+              }
+              
+          }
+          
+        
+          
+          function waitForTotalOrder(){
+
+              $.ajax({
+                  url:"<?php echo base_url('Temp/total_order');?>",
+                  async: true,
+                  cache: false,
+                  timeout:5000,
+
+                  success: function(data){
+                      //alert(data);
+                      total_order("new", data);
+                      setTimeout(
+                          waitForTotalOrder,
+                          200
+                      );
+                  }
+              });
+          };
+          
+          waitForTotalOrder();
+        
+        /*batas hitung temp pesanan jahit & kain*/
+        
+        
     });
     
     $(document).ready(function(){
@@ -212,11 +254,193 @@
         
        /*script untuk jquery-maskmoney*/   
          $("#harga").maskMoney({prefix:'Rp ', allowNegative: true, thousands:' ', decimal:',', affixesStay: false});
+         $("#harga_jahit").maskMoney({prefix:'Rp ', allowNegative: true, thousands:' ', decimal:',', affixesStay: false});
+       
         
         
+         $('#kain_sendiri').click(function(){
+            if($(this).is(":checked"))
+            {
+               $.ajax({
+                 type: "POST",
+                 url: "<?= base_url() ?>pesankustom/harga_jahit/1", 
+                 data: {id_kustom: $("#id_kustom").val()},
+                 dataType: "JSON",  
+                 cache:false,
+                 success: 
+                      function(data){
+                          //alert(data.harga);
+                        $("#harga").val(data.harga);
+                          $.ajax({
+                             type: "POST",
+                             url: "<?= base_url() ?>pesankustom/jumlah_bayar", 
+                             data: {harga: $("#harga").val(),xs: $("#xs").val(),s: $("#s").val(),m: $("#m").val(),l: $("#l").val(),xl: $("#xl").val()},
+                             dataType: "JSON",  
+                             cache:false,
+                             success: 
+                                  function(data){
+                                    $("#bayar").val(data.bayar);
+                              }   
 
+
+                           }); 
+                  }   
+
+
+               });  
+            }
+            else if($(this).is(":not(:checked)"))
+            {
+                $.ajax({
+                 type: "POST",
+                 url: "<?= base_url() ?>pesankustom/harga_jahit/2", 
+                 data: {id_kustom: $("#id_kustom").val()},
+                 dataType: "JSON",  
+                 cache:false,
+                 success: 
+                      function(data){
+                         // alert(data.harga);
+                      $("#harga").val(data.harga);
+                      $.ajax({
+                          type: "POST",
+                          url: "<?= base_url() ?>pesankustom/jumlah_bayar", 
+                          data: {harga: $("#harga").val(),xs: $("#xs").val(),s: $("#s").val(),m: $("#m").val(),l: $("#l").val(),xl: $("#xl").val()},
+                          dataType: "JSON",  
+                          cache:false,
+                          success: 
+                          function(data){
+                              $("#bayar").val(data.bayar);
+                          }   
+
+
+                      });     
+                          
+                  }   
+
+               });  
+            }
+          });
+        
+         
+//        
+          $(".ukuran").attr("required", "true"); 
+          
+            
+           $('.ukuran').keyup(function(){
+               //$('#bayar').maskMoney({prefix:'Rp ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+               if(($("#xs").val() == '') && ($("#s").val() == '') && ($("#m").val() == '') && ($("#l").val() == '') && ($("#xl").val() == '')) 
+               {
+                   $(".ukuran").attr("required", "true");   
+                  // alert('aa');
+               }
+               else
+               {
+                    $(".ukuran").removeAttr("required");   
+                   //alert('bb');
+               }
+               
+                $.ajax({
+                 type: "POST",
+                 url: "<?= base_url() ?>pesankustom/jumlah_bayar", 
+                 data: {harga: $("#harga").val(),xs: $("#xs").val(),s: $("#s").val(),m: $("#m").val(),l: $("#l").val(),xl: $("#xl").val()},
+                 dataType: "JSON",  
+                 cache:false,
+                 success: 
+                      function(data){
+                        $("#bayar").val(data.bayar);
+                  }   
+
+
+               });  
+       
+           }); 
+        
+        
+        
+        $(".ukuran_model").attr("required", "true"); 
+        $('.ukuran_model').keyup(function(){
+               //$('#bayar').maskMoney({prefix:'Rp ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+               if(($("#xs").val() == '') && ($("#s").val() == '') && ($("#m").val() == '') && ($("#l").val() == '') && ($("#xl").val() == '')) 
+               {
+                   $(".ukuran_model").attr("required", "true");   
+                   //alert('aa');
+               }
+               else
+               {
+                    $(".ukuran_model").removeAttr("required");   
+                   //alert('bb');
+               }
+               
+                $.ajax({
+                 type: "POST",
+                 url: "<?= base_url() ?>pesanmodel/jumlah_bayar", 
+                 data: {harga: $("#harga_model").val(),xs: $("#xs").val(),s: $("#s").val(),m: $("#m").val(),l: $("#l").val(),xl: $("#xl").val()},
+                 dataType: "JSON",  
+                 cache:false,
+                 success: 
+                      function(data){
+                        $("#bayar_model").val(data.bayar);
+                  }   
+
+
+               });  
+       
+           }); 
+        
+        $('#kain_model').click(function(){
+            if($(this).is(":checked"))
+            {
+               $.ajax({
+                 type: "POST",
+                 url: "<?= base_url() ?>pesanmodel/harga_jahit/1", 
+                 data: {id_model: $("#id_model").val()},
+                 dataType: "JSON",  
+                 cache:false,
+                 success: 
+                      function(data){
+                          //alert(data.harga);
+                        $("#harga_model").val(data.harga);
+                          $.ajax({
+                             type: "POST",
+                             url: "<?= base_url() ?>pesanmodel/jumlah_bayar", 
+                             data: {harga: $("#harga_model").val(),xs: $("#xs").val(),s: $("#s").val(),m: $("#m").val(),l: $("#l").val(),xl: $("#xl").val()},
+                             dataType: "JSON",  
+                             cache:false,
+                             success: 
+                                  function(data){
+                                    $("#bayar_model").val(data.bayar);
+                              }   
+                           }); 
+                  }   
+               });  
+            }
+            else if($(this).is(":not(:checked)"))
+            {
+                $.ajax({
+                 type: "POST",
+                 url: "<?= base_url() ?>pesanmodel/harga_jahit/2", 
+                 data: {id_kustom: $("#id_model").val()},
+                 dataType: "JSON",  
+                 cache:false,
+                 success: 
+                      function(data){
+                         // alert(data.harga);
+                      $("#harga_model").val(data.harga);
+                      $.ajax({
+                          type: "POST",
+                          url: "<?= base_url() ?>pesanmodel/jumlah_bayar", 
+                          data: {harga: $("#harga_model").val(),xs: $("#xs").val(),s: $("#s").val(),m: $("#m").val(),l: $("#l").val(),xl: $("#xl").val()},
+                          dataType: "JSON",  
+                          cache:false,
+                          success: 
+                          function(data){
+                              $("#bayar_model").val(data.bayar);
+                          }   
+                      });     
+                  }   
+               });  
+            }
+          });
 	});
-     
-    
         
 </script>

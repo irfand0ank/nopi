@@ -37,36 +37,36 @@
                                     ?>
                                     
                                     <h3><strong><?= $list->nama ?></strong></h3>
-                                    
                                      <p>
-                                    <?php
-                                        $jasa = $this->Mdl_pemesanan->GetKategori($list->member) ;
-                                        $DataJasa = '';
-                                        foreach($jasa as $data)
-                                        {
-                                         $Datalist =  $this->Mdl_query->GetJasa($data->kode_kategori);    
-                                            
-                                         $DataJasa .= $Datalist[0]['kategori'].",";
-                                        }
-                                            
-                                        echo substr($DataJasa, 0, -1);
-                                    ?>
-                                        
+                                     
                                         
                                     </p>
                                 </div>
-                                <table class="table table-hover no-margin">
+                                <table class="table  no-margin">
                                     <tbody>
                                         <!--<tr>
                                             <td>Status</td>
                                             <td><span class="notice notice-danger">Active</span></td>
                                         </tr>-->
                                         <tr>
+                                            <td>Harga (Termasuk Kain)</td>
+                                            <td>
+                                                <b><?= rupiah($list->harga) ?></b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waktu Pengerjaan</td>
+                                            <td>
+                                                <?= $list->waktu_kerja ?> Hari
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>User Rating</td>
                                             <td>
                                                 <?= rating($list->nilai_member) ?>
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                             <td>Bergabung </td>
                                             <td><?= tgl_indo($list->waktu) ?></td>
@@ -77,15 +77,14 @@
                                                     if(isset($sys_no))
                                                     {
                                                 ?>          
-                                                        <a href="<?= base_url()?>pemesanan/detail_kustom/<?= $list->member ?>" class="btn btn-info btn-xs" ><i class="fa fa-american-sign-language-interpreting"></i> Jahit Kustom </a>
-                                                        <a href="<?= base_url()?>pemesanan/detail_penjahit/<?= $list->member ?>" class="btn btn-info btn-xs" ><i class="fa fa-cart-arrow-down"></i> Jahit Model </a>
+                                                        <a href="<?= base_url()?>pesankustom/detail_pesan/<?= $list->no_kustom ?>" class="btn btn-info btn-bordered btn-xs btn-block" ><i class="fa fa-american-sign-language-interpreting"></i> Pesan Jahit  </a>
                                                         
                                                 <?php
                                                     }
                                                     else
                                                     {
                                                 ?>
-                                                        <a href="#" class="btn btn-info btn-xs" data-toggle='modal'data-target='#belum_login'    style='text-decoration: none;'><i class="fa fa-cart-arrow-down"></i> Pesan Jahit </a>
+                                                        <a href="#" class="btn btn-info  btn-bordered btn-xs btn-block" data-toggle='modal'data-target='#belum_login'    style='text-decoration: none;'><i class="fa fa-cart-arrow-down"></i> Pesan Jahit </a>
                                                 <?php
                                                     }
                                                 ?>

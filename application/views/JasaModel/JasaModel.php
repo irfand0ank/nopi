@@ -4,7 +4,7 @@
 			
                 <div class="col-xs-6">
                     <h4 class="box-title">
-                        <a href="<?= base_url() ?>JasaKustom/tambah" class="btn btn-primary btn-bordered waves-effect waves-light btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Tambah </a>
+                        <a href="<?= base_url() ?>JasaModel/tambah" class="btn btn-primary btn-bordered waves-effect waves-light btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Tambah  </a>
                     </h4>   
                 </div>
                 
@@ -17,7 +17,8 @@
                             <thead>
 							 <tr>
 								<th style="text-align:center">No</th>
-								<th style="text-align:center">Kategori</th>
+								<th style="text-align:center">Nama</th>
+								<th style="text-align:center">Foto</th>
 								<th style="text-align:center">Harga</th>
 								<th style="text-align:center">Harga Jahit</th>
 								<th style="text-align:center">Waktu Kerja</th>
@@ -32,17 +33,19 @@
                                 $no = 1;
                                 foreach($result as $info)
                                 {
-                                    $jasa       = $this->Mdl_query->GetJasa($info->kode_kategori);
                               ?>
                               <tr>
                                   <td><?= $no ?></td>
-                                  <td><?= $jasa[0]['kategori'] ?></td>
+                                  <td><?= $info->nama ?></td>
+                                  <td>
+                                      <img src="<?= base_url()."assets/images/".$info->foto; ?>" alt="" width="150px" height="150px">
+                                  </td>
                                   <td><?= rupiah($info->harga) ?></td>
                                   <td><?= rupiah($info->harga_jahit) ?></td>
                                   <td><?= $info->waktu ?> Hari</td>
                                   <td><?= $info->keterangan ?></td>
                                   <td  style="width:10%;">
-                                      <a href="<?= base_url(); ?>JasaKustom/ubah/<?= $info->no ?>" class="btn btn-primary btn-xs " > <i class="fa fa-edit fa-sm"></i></a> 
+                                      <a href="<?= base_url(); ?>JasaModel/ubah/<?= $info->no ?>" class="btn btn-primary btn-xs " > <i class="fa fa-edit fa-sm"></i></a> 
                                       <a  href='javascript:;' class='btn btn-danger btn-xs '
                                          data-url='<?php echo base_url()."".$url_modul ?>' 
                                          data-no='<?php echo $info->no ?>' 

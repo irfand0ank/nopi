@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Mdl_pemesanan extends CI_Model{
+class Mdl_pesankustom extends CI_Model{
     
     public function __construct(){
         parent::__construct();    
@@ -10,54 +10,7 @@ class Mdl_pemesanan extends CI_Model{
        
     }
     
-    public function GetPenjahit()
-    {
-        
-        $res= $this->db->query(" SELECT 
-                                rating.member, 
-                                AVG(rating.rating) as nilai_member,
-                                users.`user`,users.foto,users.nama,
-                                regis_penjahit.moto,regis_penjahit.jasa
-                                 FROM
-                                 rating,users,regis_penjahit
-                                WHERE 
-                                users.`no` = rating.member 
-                                AND
-                                users.`level` = '3'
-                                GROUP BY member 
-                                ORDER BY nilai_member DESC ");
-        
-        
-             
-        return  $res->result();
-        
-    }
-    
-    
-    public function GetKategori($member)
-    {
-        
-        $res= $this->db->query(" SELECT DISTINCT kode_kategori from jasa_kustom where id_penjahit = '$member' ");
-        
-        
-             
-        return  $res->result();
-        
-    }
-    
-    public function GetJasaJahit($penjahit)
-    {
-        
-        $query= $this->db->query(" SELECT * from jasa_kustom where id_penjahit = '$penjahit' ");
-        
-        
-             
-        $res = $query->num_rows();
-        return $res ;
-        
-    }
-    
-    public function DataJasa($limit,$offset,$penjahit){
+    public function GetPagesPenjahit($kategori,$limit,$offset){
         if($offset == null)
         {
             $where = $limit;
@@ -69,17 +22,56 @@ class Mdl_pemesanan extends CI_Model{
         
         
         $query = $this->db->query("
-            SELECT *
+            SELECT 
+            rating.member, 
+            AVG(rating.rating) as nilai_member,
+            users.`user`,users.foto,users.nama,users.waktu,
+            jasa_kustom.harga,jasa_kustom.waktu as waktu_kerja,jasa_kustom.keterangan,jasa_kustom.kode_kategori, jasa_kustom.keterangan, jasa_kustom.no as no_kustom
              FROM
-             jasa_kustom
+             rating,users,regis_penjahit,jasa_kustom
             WHERE 
-            id_penjahit = '$penjahit'
-            ORDER BY no DESC
+            users.`no` = rating.member 
+            AND
+            users.`no` = jasa_kustom.id_penjahit 
+            AND
+            regis_penjahit.id_users = users.`no`
+            AND
+            jasa_kustom.kode_kategori = '$kategori'
+            GROUP BY member  
+            ORDER BY nilai_member DESC
             LIMIT $where
         ");
+       
+            return $query->result(); 
         
+       
+	}
+    
+    public function GetTotalPenjahit($kategori){
         
-        return $query->result();
+        $query = $this->db->query("
+            SELECT 
+            rating.member, 
+            AVG(rating.rating) as nilai_member,
+            users.`user`,users.foto,users.nama,users.waktu,
+            jasa_kustom.harga,jasa_kustom.waktu as waktu_kerja,jasa_kustom.keterangan,jasa_kustom.kode_kategori
+             FROM
+             rating,users,regis_penjahit,jasa_kustom
+            WHERE 
+            users.`no` = rating.member 
+            AND
+            users.`no` = jasa_kustom.id_penjahit 
+            AND
+            regis_penjahit.id_users = users.`no`
+            AND
+            jasa_kustom.kode_kategori = '$kategori'
+            GROUP BY member ORDER BY nilai_member 
+           
+        ");
+       
+            return $query->num_rows(); 
+        
+       
 	}
     
     public function temp_custom()
@@ -88,7 +80,7 @@ class Mdl_pemesanan extends CI_Model{
         $sys_no                     = $this->session->userdata('sys_no');
         $config['upload_path']      = './assets/images/';
         $config['allowed_types']    = 'gif|jpg|png';
-        $config['max_size']	        = '1000000';
+        $config['max_size']	        = '3000000';
         $nmfile                     = "file_".time();
         $config['file_name']        = $nmfile;
         
@@ -121,8 +113,9 @@ class Mdl_pemesanan extends CI_Model{
             'foto'                  => $foto,
         );
         
-        $this->db->Insert('temp_jahit_kustom',$data);
-        redirect('temp');
+        $this->db->Insert('temp_kustom',$data);
+        //echo $this->db->last_query();
+       redirect('pesankustom');
     }
     
     

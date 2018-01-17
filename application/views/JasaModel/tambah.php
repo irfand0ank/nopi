@@ -9,22 +9,18 @@
                 <div class="box-content">
                    <?php 
                         $artibut = array('class'=>'form-horizontal ' );
-                        echo form_open('JasaKustom/simpan',$artibut);
+                        echo form_open_multipart('JasaModel/simpan',$artibut);
                     ?>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
+                            <label for="inputEmail3" class="col-sm-3 control-label">Foto Model Jahit</label>
                             <div class="col-sm-8">
-                                <select class="form-control" name="jasa" required>
-                                    <option value="">-- Pilih Kategori --</option>
-                                    <?php 
-                                    foreach($result as $jasa2){        
-                                    ?>
-                                    <option value="<?= $jasa2->no?>"> <?= $jasa2->kategori ?> </option>
-                                    
-                                    <?php 
-                                    }
-                                    ?>
-                                </select>
+                                 <input type="file" name="foto" id="input-file-now"  class="dropify" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label"> Nama</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="nama"  placeholder="Nama Jasa" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -34,9 +30,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label"> Harga Jahit (tidak termasuk kain)</label>
+                            <label for="inputEmail3" class="col-sm-3 control-label"> Harga Jahit  (tidak termasuk kain)</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="harga_jahit" id="harga_jahit" placeholder="Harga Jahit (tidak termasuk kain)" required>
+                                <input type="text" class="form-control" name="harga_jahit" id="harga_jahit" placeholder="Harga Jahit  (tidak termasuk kain)" required>
                             </div>
                         </div>
                         
@@ -57,7 +53,7 @@
                         <div class="form-group margin-bottom-0">
                             <div class="col-sm-offset-3 col-sm-8">
                                 <button type="submit" class="btn btn-info btn-bordered waves-effect waves-light btn-sm">Tambah</button>
-                                <a href="<?= base_url()?>JasaKustom" class="btn btn-default btn-bordered waves-effect waves-light btn-sm">Batal</a>
+                                <a href="<?= base_url()?>JasaModel" class="btn btn-default btn-bordered waves-effect waves-light btn-sm">Batal</a>
                             </div>
                         </div>
                    <?= form_close() ?>

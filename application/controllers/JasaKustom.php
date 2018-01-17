@@ -20,9 +20,11 @@ class JasaKustom extends CI_Controller {
         $data['main']           = 'JasaKustom/JasaKustom';
         $data['title']          = 'Data Jasa Jahit'; 
         $data['jasa_act']       = 'current';
+        $data['jasa_act2']      = 'active';
+        $data['kustom_act']     = 'current';
         $data['url_modul']      = $this->uri->segment(1);
         
-        $data['result']         = $this->Mdl_query->GetDataWhere('jasa_jahit','id_penjahit',$this->akun);
+        $data['result']         = $this->Mdl_query->GetDataWhere('jasa_kustom','id_penjahit',$this->akun);
         
         
        // echo $this->db->last_query();
@@ -52,7 +54,7 @@ class JasaKustom extends CI_Controller {
         $data['url_modul']      = $this->uri->segment(1);
         $data['no']             = $this->uri->segment(3);
         
-        $edit                   = $this->Mdl_query->GetWhereArr('jasa_jahit','no',$data['no']);
+        $edit                   = $this->Mdl_query->GetWhereArr('jasa_kustom','no',$data['no']);
         
         $jasa                   =  $this->Mdl_query->GetJasa($edit[0]['kode_kategori']);
         
@@ -60,6 +62,7 @@ class JasaKustom extends CI_Controller {
                 'no'            => $edit[0]['no'],
                 'kategori'      => $jasa[0]['kategori'],
                 'harga'         => $edit[0]['harga'],
+                'harga_jahit'   => $edit[0]['harga_jahit'],
                 'waktu'         => $edit[0]['waktu'],
                 'keterangan'    => $edit[0]['keterangan']
         );
@@ -89,8 +92,8 @@ class JasaKustom extends CI_Controller {
      public function delete()
     {
         $no = $this->uri->segment(3);
-        $table = 'jasa_jahit';
+        $table = 'jasa_kustom';
         $this->Mdl_query->delete($no,$table);
-        redirect('jasa'); 
+        redirect('JasaKustom'); 
     }
 }

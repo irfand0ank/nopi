@@ -68,11 +68,16 @@
                     <!--<li class="<?= @$jasa_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>jasa"><i class="menu-icon fa fa-crosshairs"></i><span>Jasa Jahit </span>&nbsp;<span class="badge notice-purple" id="order_count"></span></a>
                     </li>-->
-                    <li class="<?= @$jasa_act ?>">
-                        <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-flag"></i><span>Jasa Jahit</span><span class="menu-arrow fa fa-angle-down"></span></a>
+                    <li class="<?= @$jasa_act." ". @$jasa_act2 ?>">
+                        <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-flag"></i><span>Jasa Jahit</span><span class="menu-arrow fa fa-angle-down"></span>
+                        </a>
                         <ul class="sub-menu js__content">
-                            <li><a href="<?= base_url()?>JasaKustom"><i class="fa fa-american-sign-language-interpreting"></i> Jahit Kustom</a></li>
-                            <li><a href="<?= base_url()?>JasaModel"><i class="fa fa-cart-arrow-down"></i> Jahit Model</a></li>
+                            <li class="<?= @$kustom_act ?>">
+                                <a href="<?= base_url()?>JasaKustom"><i class="fa fa-american-sign-language-interpreting"></i> Jahit Kustom</a>
+                            </li>
+                            <li class="<?= @$model_act ?>">
+                                <a href="<?= base_url()?>JasaModel"><i class="fa fa-cart-arrow-down"></i> Jahit Model</a>
+                            </li>
                         </ul>
                         <!-- /.sub-menu js__content -->
                     </li>
@@ -102,19 +107,29 @@
 
                         case"5":
                     ?>
-                    <li class="<?= @$pemesanan_act ?>">
-                        <a class="waves-effect" href="<?= base_url()?>pemesanan/penjahit"><i class="menu-icon fa fa-paw"></i><span> Penjahit</span></a>
+                    <li class="<?= @$pemesanan_act." ". @$pemesanan_act2 ?>">
+                        <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-flag"></i><span>Jasa Jahit</span><span class="menu-arrow fa fa-angle-down"></span>
+                        </a>
+                        <ul class="sub-menu js__content">
+                            <li class="<?= @$kustom_act ?>">
+                                <a href="<?= base_url()?>PesanKustom"><i class="fa fa-american-sign-language-interpreting"></i> Jahit Kustom</a>
+                            </li>
+                            <li class="<?= @$model_act ?>">
+                                <a href="<?= base_url()?>PesanModel"><i class="fa fa-cart-arrow-down"></i> Jahit Model</a>
+                            </li>
+                        </ul>
+                        <!-- /.sub-menu js__content -->
                     </li>
-                    <li class="<?= @lapak_act ?>">
+                    <li class="<?= @$lapak_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-shopping-bag"></i><span> Lapak Kain</span></a>
                     </li>
-                    <li class="<?= @lapak_act ?>">
-                        <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-shopping-basket"></i><span> Pesanan Anda</span></a>
+                    <li class="<?= @$temp_act ?>">
+                        <a class="waves-effect" href="<?= base_url()?>temp"><i class="menu-icon fa fa-shopping-basket"></i><span>Pesanan Anda</span> &nbsp;<span class="badge notice-purple" id="total_count"></span> </a>
                     </li>
-                    <li class="<?= @lapak_act ?>">
+                    <li class="<?= @$lapak_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-check-square-o"></i><span> Pesanan Diterima</span></a>
                     </li>
-                    <li class="<?= @lapak_act ?>">
+                    <li class="<?= @$lapak_act ?>">
                         <a class="waves-effect" href="<?= base_url()?>profil"><i class="menu-icon fa fa-ban"></i><span> Pesanan Ditolak</span></a>
                     </li>
                     

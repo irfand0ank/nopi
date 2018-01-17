@@ -49,6 +49,12 @@
 	<script src="<?= base_url() ?>assets/plugin/dropify/js/dropify.min.js"></script>
 	<script src="<?= base_url() ?>assets/scripts/fileUpload.demo.min.js"></script>
 
+    <!-- Form Wizard -->
+	<script src="<?= base_url() ?>assets/plugin/form-wizard/prettify.js"></script>
+	<script src="<?= base_url() ?>assets/plugin/form-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script src="<?= base_url() ?>assets/plugin/jquery-validation/jquery.validate.min.js"></script>
+	<script src="<?= base_url() ?>assets/scripts/form.wizard.init.min.js"></script>
+
 
 	<script src="<?= base_url() ?>assets/scripts/main.min.js"></script>
 	<script src="<?= base_url() ?>assets/scripts/style.js"></script>

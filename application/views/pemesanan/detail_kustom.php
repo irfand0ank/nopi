@@ -44,7 +44,7 @@
                                         <tr>
                                             <td colspan="2" style="text-align:center">
                                                        
-                                                <a href="<?= base_url()?>pemesanan/pesan_jahit/<?= $list->no ?>" class="btn btn-info btn-xs" ><i class="fa fa-cart-arrow-down"></i> Pesan Jahit </a>
+                                                <a href="<?= base_url()?>pemesanan/pesan_kustom/<?= $list->no ?>" class="btn btn-info btn-xs" ><i class="fa fa-cart-arrow-down"></i> Pesan Jahit </a>
                                                 
                                             </td>
                                         </tr>

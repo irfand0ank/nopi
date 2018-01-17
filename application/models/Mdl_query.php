@@ -16,6 +16,18 @@ class Mdl_query extends CI_Model{
              
          return $res->result();
      }
+    public function GetDataOrder($table,$order,$jenis)
+     {
+         $res=$this->db->query("
+            SELECT * 
+            from $table
+            order
+             by $order $jenis
+           "
+        );
+             
+         return $res->result();
+     }
     
     public function GetDataWhere($table,$field,$no)
     {
@@ -93,7 +105,7 @@ class Mdl_query extends CI_Model{
         return $level ;
      }
     
-    public function DataPages($level,$limit,$offset){
+    public function GetPagesPenjahit($jenis,$limit,$offset){
         if($offset == null)
         {
             $where = $limit;
@@ -111,15 +123,13 @@ class Mdl_query extends CI_Model{
             users.`user`,users.foto,users.nama,users.waktu,
             regis_penjahit.moto,regis_penjahit.jasa
              FROM
-             rating,users,regis_penjahit,jasa_jahit
+             rating,users,regis_penjahit,$jenis
             WHERE 
             users.`no` = rating.member 
             AND
-            users.`no` = jasa_jahit.id_penjahit 
+            users.`no` = $jenis.id_penjahit 
             AND
             regis_penjahit.id_users = users.`no`
-            AND
-            users.`level` = '$level'
             GROUP BY member 
             ORDER BY nilai_member DESC
             LIMIT $where
@@ -129,28 +139,37 @@ class Mdl_query extends CI_Model{
         return $query->result();
 	}
     
-    public function GetTotalRows($level)
+    public function GetTotalPenjahit($jenis)
     {
         $query =    $this->db->query(" SELECT 
                     rating.member, 
                     AVG(rating.rating) as nilai_member,
                     users.`user`,users.foto,users.nama,users.waktu,
-                    regis_penjahit.moto,regis_penjahit.jasa
+                    regis_penjahit.moto
                      FROM
-                     rating,users,regis_penjahit,jasa_jahit
+                     rating,users,regis_penjahit,$jenis
                     WHERE 
                     users.`no` = rating.member 
                     AND
-                    users.`no` = jasa_jahit.id_penjahit 
+                    users.`no` = $jenis.id_penjahit 
                     AND
                     regis_penjahit.id_users = users.`no`
-                    AND
-                    users.`level` = '$level'
                     GROUP BY member 
                     ORDER BY nilai_member DESC");
                  
         $res = $query->num_rows();
         return $res ;
+    }
+    
+    public function GetKategori($kode)
+    {
+        
+        
+        $query =    $this->db->query(" Select * From kategori where no = '$kode' ");
+                 
+       $res = $query->result_array();
+        
+        return $res[0]['kategori'];
     }
     
     public function ReadKategori($kode)
@@ -167,11 +186,11 @@ class Mdl_query extends CI_Model{
     {
         if($kode == null)
         {
-            $query =    $this->db->query(" Select * From kategori ");
+            $query =    $this->db->query(" Select * From kategori  order by kategori asc");
         }
         else
         {
-            $query =    $this->db->query(" Select * From kategori where no not in ($kode)");
+            $query =    $this->db->query(" Select * From kategori where no not in ($kode) order by kategori asc");
 
         }
             

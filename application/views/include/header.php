@@ -37,6 +37,10 @@
     <!-- Dropify -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/dropify/css/dropify.min.css">
     
+    
+	<!-- Form Wizard -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugin/form-wizard/prettify.css">
+    
     <link id="custom-color-themes" rel="stylesheet" href="<?= base_url() ?>assets/styles/color/green.css ">
 </head>
 
