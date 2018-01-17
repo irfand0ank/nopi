@@ -10,10 +10,65 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-12-29 23:35:13
+Date: 2018-01-17 18:44:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `jasa_kustom`
+-- ----------------------------
+DROP TABLE IF EXISTS `jasa_kustom`;
+CREATE TABLE `jasa_kustom` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_kategori` varchar(255) DEFAULT NULL,
+  `id_penjahit` varchar(255) DEFAULT NULL,
+  `harga` decimal(20,2) DEFAULT NULL,
+  `harga_jahit` decimal(20,2) DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
+  `waktu` int(11) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of jasa_kustom
+-- ----------------------------
+INSERT INTO jasa_kustom VALUES ('7', '17', '11', '50000.00', '25000.00', 'cepat selesai', '3');
+INSERT INTO jasa_kustom VALUES ('8', '17', '14', '5000.00', null, '', '25');
+INSERT INTO jasa_kustom VALUES ('10', '17', '15', '10000.00', null, null, '1');
+INSERT INTO jasa_kustom VALUES ('11', '17', '16', '50000.00', null, null, '1');
+INSERT INTO jasa_kustom VALUES ('12', '17', '17', '10000.00', null, null, '2');
+INSERT INTO jasa_kustom VALUES ('13', '17', '18', '300000.00', null, null, '3');
+INSERT INTO jasa_kustom VALUES ('14', '17', '19', '100000.00', '50000.00', '', '4');
+INSERT INTO jasa_kustom VALUES ('15', '17', '20', '24000.00', null, null, '2');
+INSERT INTO jasa_kustom VALUES ('16', '17', '21', '20000.00', null, null, '4');
+INSERT INTO jasa_kustom VALUES ('17', '17', '22', '100000.00', '30000.00', '', '1');
+INSERT INTO jasa_kustom VALUES ('18', '17', '23', '6000.00', null, null, '3');
+INSERT INTO jasa_kustom VALUES ('22', '16', '11', '50000.00', '20000.00', '', '7');
+
+-- ----------------------------
+-- Table structure for `jasa_model`
+-- ----------------------------
+DROP TABLE IF EXISTS `jasa_model`;
+CREATE TABLE `jasa_model` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_penjahit` varchar(255) DEFAULT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `harga` float(20,2) DEFAULT NULL,
+  `harga_jahit` float(20,2) DEFAULT NULL,
+  `keterangan` text,
+  `waktu` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of jasa_model
+-- ----------------------------
+INSERT INTO jasa_model VALUES ('1', '11', 'akun biasa', 'file_1515940218.jpg', '30000.00', '10000.00', '', '1');
+INSERT INTO jasa_model VALUES ('2', '11', 'fff', 'file_1515940737.PNG', '50000.00', '10000.00', '', '111');
+INSERT INTO jasa_model VALUES ('3', '11', '64rgrgrt', 'file_1515940767.PNG', '50000.00', '15000.00', '', '43');
+INSERT INTO jasa_model VALUES ('4', '22', 'jahit suka2', 'file_1516093476.jpg', '50000.00', '15000.00', '', '3');
+
 -- ----------------------------
 -- Table structure for `kategori`
 -- ----------------------------
@@ -22,37 +77,30 @@ CREATE TABLE `kategori` (
   `no` int(11) NOT NULL AUTO_INCREMENT,
   `kategori` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of kategori
 -- ----------------------------
-INSERT INTO kategori VALUES ('1', 'Celana Jeans');
-INSERT INTO kategori VALUES ('2', 'Kemeja');
-INSERT INTO kategori VALUES ('3', 'Rompi');
-INSERT INTO kategori VALUES ('4', 'w');
-INSERT INTO kategori VALUES ('5', 'q');
-INSERT INTO kategori VALUES ('6', 'q');
-INSERT INTO kategori VALUES ('7', 'w');
-INSERT INTO kategori VALUES ('8', 'e');
-INSERT INTO kategori VALUES ('9', 'r');
-INSERT INTO kategori VALUES ('10', 'r');
-INSERT INTO kategori VALUES ('11', 'r');
-INSERT INTO kategori VALUES ('12', 'r');
-INSERT INTO kategori VALUES ('13', 'r');
-INSERT INTO kategori VALUES ('14', 'r');
-INSERT INTO kategori VALUES ('15', 'r');
-INSERT INTO kategori VALUES ('16', 'r');
-INSERT INTO kategori VALUES ('17', 'erwrwrwer');
-INSERT INTO kategori VALUES ('18', 'erwerw');
-INSERT INTO kategori VALUES ('19', 'werwer');
-INSERT INTO kategori VALUES ('20', 'werwr');
-INSERT INTO kategori VALUES ('21', 'wrwerw');
-INSERT INTO kategori VALUES ('22', 'werwrew');
-INSERT INTO kategori VALUES ('23', 'wrwer');
-INSERT INTO kategori VALUES ('24', 'werwer');
-INSERT INTO kategori VALUES ('25', 'werwer');
-INSERT INTO kategori VALUES ('26', 'qweq');
+INSERT INTO kategori VALUES ('1', 'rok pendek');
+INSERT INTO kategori VALUES ('2', 'rok panjang');
+INSERT INTO kategori VALUES ('3', 'piyama dewasa');
+INSERT INTO kategori VALUES ('4', 'piyaman anak');
+INSERT INTO kategori VALUES ('5', 'khimar dewasa');
+INSERT INTO kategori VALUES ('6', 'khimar anak');
+INSERT INTO kategori VALUES ('7', 'kemeja anak');
+INSERT INTO kategori VALUES ('8', 'Kemeja');
+INSERT INTO kategori VALUES ('9', 'Kaos oblong');
+INSERT INTO kategori VALUES ('10', 'Gaun');
+INSERT INTO kategori VALUES ('11', 'Gamis');
+INSERT INTO kategori VALUES ('12', 'Dreess dewasa');
+INSERT INTO kategori VALUES ('13', 'Celana pendek');
+INSERT INTO kategori VALUES ('14', 'Celana panjang');
+INSERT INTO kategori VALUES ('15', 'Blazer');
+INSERT INTO kategori VALUES ('16', 'Baju anak');
+INSERT INTO kategori VALUES ('17', 'Atasan');
+INSERT INTO kategori VALUES ('18', 'wisti');
+INSERT INTO kategori VALUES ('19', 'coba');
 
 -- ----------------------------
 -- Table structure for `pelanggan`
@@ -301,6 +349,7 @@ CREATE TABLE `penjual_kain` (
 DROP TABLE IF EXISTS `pesanan`;
 CREATE TABLE `pesanan` (
   `no` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_pesanan` varchar(255) DEFAULT NULL,
   `id_penjahit` varchar(255) DEFAULT NULL,
   `id_pelanggan` varchar(255) DEFAULT NULL,
   `id_jasa` varchar(255) DEFAULT NULL,
@@ -309,21 +358,76 @@ CREATE TABLE `pesanan` (
   `baca` enum('T','F') DEFAULT 'F',
   `setuju_jahit` enum('F','W','T') DEFAULT NULL,
   `finish` enum('T','F') DEFAULT 'F',
-  `waktu_kerja` int(11) DEFAULT NULL,
   `mulai` date DEFAULT NULL,
   `selesai` date DEFAULT NULL,
   `setuju_pemesan` enum('F','T') DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of pesanan
 -- ----------------------------
-INSERT INTO pesanan VALUES ('1', '11', '10', '1', 'biasa', 'ccc', 'T', null, 'F', null, null, null, null);
-INSERT INTO pesanan VALUES ('2', '11', '10', '2', 'aa', 'qq', 'T', null, 'F', null, null, null, 'T');
-INSERT INTO pesanan VALUES ('3', '11', '10', '3', 'aa', 'dd', 'T', null, 'F', null, null, null, null);
-INSERT INTO pesanan VALUES ('4', '11', '10', '3', '213', '11', 'T', 'T', 'F', null, null, null, null);
-INSERT INTO pesanan VALUES ('5', '11', '10', '2', '12', '1212', 'T', 'F', 'F', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for `pesan_kain`
+-- ----------------------------
+DROP TABLE IF EXISTS `pesan_kain`;
+CREATE TABLE `pesan_kain` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of pesan_kain
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pesan_kustom`
+-- ----------------------------
+DROP TABLE IF EXISTS `pesan_kustom`;
+CREATE TABLE `pesan_kustom` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` varchar(255) DEFAULT NULL,
+  `id_kustom` varchar(255) DEFAULT NULL,
+  `xs` int(11) DEFAULT NULL,
+  `s` int(11) DEFAULT NULL,
+  `m` int(11) DEFAULT NULL,
+  `l` int(11) DEFAULT NULL,
+  `xl` int(11) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `catatan` text,
+  `bayar` float(20,2) DEFAULT NULL,
+  `kain` enum('T','F') DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of pesan_kustom
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pesan_model`
+-- ----------------------------
+DROP TABLE IF EXISTS `pesan_model`;
+CREATE TABLE `pesan_model` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` varchar(255) DEFAULT NULL,
+  `id_model` varchar(255) DEFAULT NULL,
+  `xs` int(11) DEFAULT NULL,
+  `s` int(11) DEFAULT NULL,
+  `m` int(11) DEFAULT NULL,
+  `l` int(11) DEFAULT NULL,
+  `xl` int(11) DEFAULT NULL,
+  `bayar` float(20,2) DEFAULT NULL,
+  `catatan` text,
+  `kain` enum('T','F') DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of pesan_model
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `rating`
@@ -334,22 +438,26 @@ CREATE TABLE `rating` (
   `member` varchar(255) DEFAULT NULL,
   `pelanggan` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `rating` float(11,0) DEFAULT NULL,
+  `rating` float DEFAULT '1',
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of rating
 -- ----------------------------
-INSERT INTO rating VALUES ('1', '10', '11', null, '4');
-INSERT INTO rating VALUES ('2', '10', '12', null, '3');
-INSERT INTO rating VALUES ('3', '9', '13', null, '5');
-INSERT INTO rating VALUES ('4', '9', '14', null, '4');
-INSERT INTO rating VALUES ('5', '10', '15', null, '2');
-INSERT INTO rating VALUES ('6', '9', '16', null, '5');
-INSERT INTO rating VALUES ('7', '8', '17', null, '5');
-INSERT INTO rating VALUES ('8', '20', '18', null, '1');
-INSERT INTO rating VALUES ('9', '21', '19', null, '5');
+INSERT INTO rating VALUES ('1', '11', '11', null, '5');
+INSERT INTO rating VALUES ('2', '14', '12', null, '2');
+INSERT INTO rating VALUES ('3', '15', '13', null, '4');
+INSERT INTO rating VALUES ('4', '16', '14', null, '3');
+INSERT INTO rating VALUES ('5', '17', '15', null, '4');
+INSERT INTO rating VALUES ('6', '18', '16', null, '5');
+INSERT INTO rating VALUES ('7', '19', '17', null, '4');
+INSERT INTO rating VALUES ('8', '11', '18', null, '4');
+INSERT INTO rating VALUES ('9', '15', '19', null, '4');
+INSERT INTO rating VALUES ('10', '20', null, null, '1');
+INSERT INTO rating VALUES ('11', '21', null, null, '1');
+INSERT INTO rating VALUES ('12', '22', null, null, '1');
+INSERT INTO rating VALUES ('13', '23', null, null, '1');
 
 -- ----------------------------
 -- Table structure for `regis_penjahit`
@@ -363,14 +471,91 @@ CREATE TABLE `regis_penjahit` (
   `nomor_rek` varchar(255) DEFAULT NULL,
   `jasa` varchar(255) DEFAULT NULL,
   `moto` varchar(255) DEFAULT NULL,
-  `rating` int(11) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of regis_penjahit
 -- ----------------------------
-INSERT INTO regis_penjahit VALUES ('4', '11', '191', 'bri', '0806423566sss', '1,16,2,20,21,3,4', null, null);
+INSERT INTO regis_penjahit VALUES ('4', '11', '191', 'bri', '0806423566sss', '1,16,2,20,21,3,4', null);
+INSERT INTO regis_penjahit VALUES ('5', '14', '1', 'bri', '9999999', '1,2,3', null);
+INSERT INTO regis_penjahit VALUES ('6', '15', '2', 'bri', '888888', '8,9,10', null);
+INSERT INTO regis_penjahit VALUES ('7', '16', '4', 'bri', '77777', '3,5,6', null);
+INSERT INTO regis_penjahit VALUES ('8', '17', '8', 'bri', '22222', '9,10,11', null);
+INSERT INTO regis_penjahit VALUES ('9', '18', '12', 'bni', '6666666', '8,12,13', null);
+INSERT INTO regis_penjahit VALUES ('10', '19', '17', 'bri', '55555', '17,18,19', null);
+INSERT INTO regis_penjahit VALUES ('11', '20', '18', 'bri', '909090', '15,16,19', null);
+INSERT INTO regis_penjahit VALUES ('12', '21', '22', 'bri', '120101', '9,10,11', null);
+INSERT INTO regis_penjahit VALUES ('13', '22', '25', 'bri', '718191', '8,9,10', null);
+INSERT INTO regis_penjahit VALUES ('14', '23', '28', 'bri', '181019', '11,12,13', null);
+
+-- ----------------------------
+-- Table structure for `temp_kain`
+-- ----------------------------
+DROP TABLE IF EXISTS `temp_kain`;
+CREATE TABLE `temp_kain` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of temp_kain
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `temp_kustom`
+-- ----------------------------
+DROP TABLE IF EXISTS `temp_kustom`;
+CREATE TABLE `temp_kustom` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` varchar(255) DEFAULT NULL,
+  `id_kustom` varchar(255) DEFAULT NULL,
+  `xs` int(11) DEFAULT NULL,
+  `s` int(11) DEFAULT NULL,
+  `m` int(11) DEFAULT NULL,
+  `l` int(11) DEFAULT NULL,
+  `xl` int(11) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `catatan` text,
+  `bayar` float(20,2) DEFAULT NULL,
+  `kain` enum('T','F') DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of temp_kustom
+-- ----------------------------
+INSERT INTO temp_kustom VALUES ('10', '10', '7', '1', '0', '0', '2', '0', 'file_1516083189.PNG', 'jangan banyak manik2', '150000.00', null);
+INSERT INTO temp_kustom VALUES ('11', '10', '14', '1', '0', '0', '0', '2', 'file_1516086963.jpg', '', '150000.00', null);
+INSERT INTO temp_kustom VALUES ('12', '10', '17', '0', '0', '3', '0', '0', 'file_1516093076.jpg', 'yang penting jadi', '90000.00', null);
+INSERT INTO temp_kustom VALUES ('13', '10', '10', '1', '0', '0', '0', '0', 'file_1516107504.jpg', '', '10000.00', null);
+INSERT INTO temp_kustom VALUES ('17', '10', '13', '0', '0', '0', '1', '0', 'file_1516168151.jpg', '', '300000.00', null);
+
+-- ----------------------------
+-- Table structure for `temp_model`
+-- ----------------------------
+DROP TABLE IF EXISTS `temp_model`;
+CREATE TABLE `temp_model` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` varchar(255) DEFAULT NULL,
+  `id_model` varchar(255) DEFAULT NULL,
+  `xs` int(11) DEFAULT NULL,
+  `s` int(11) DEFAULT NULL,
+  `m` int(11) DEFAULT NULL,
+  `l` int(11) DEFAULT NULL,
+  `xl` int(11) DEFAULT NULL,
+  `bayar` float(20,2) DEFAULT NULL,
+  `catatan` text,
+  `kain` enum('T','F') DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of temp_model
+-- ----------------------------
+INSERT INTO temp_model VALUES ('1', '10', '1', '1', '0', '0', '0', '0', '10000.00', 'cepat selesai saja', null);
+INSERT INTO temp_model VALUES ('2', '10', '4', '1', '0', '0', '0', '0', '15000.00', '', null);
 
 -- ----------------------------
 -- Table structure for `transaksi_kain`
@@ -399,18 +584,30 @@ CREATE TABLE `users` (
   `user` varchar(255) DEFAULT NULL,
   `pass` varchar(255) DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
-  `level` int(1) NOT NULL,
+  `level` enum('5','4','3','2','1') NOT NULL DEFAULT '5',
   `foto` varchar(255) DEFAULT NULL,
+  `waktu` date DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO users VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin lagi 123', '1', null);
-INSERT INTO users VALUES ('10', 'akun', '05c0598f35c35762cd7f3801e2388b37', 'akun biasa', '5', null);
-INSERT INTO users VALUES ('3', 'disperindag', '80c7888fef32a85d7811ecca03bcbfef', 'disperindag', '2', null);
-INSERT INTO users VALUES ('4', 'rahmat', 'af2a4c9d4c4956ec9d6ba62213eed568', 'Rahmat', '2', null);
-INSERT INTO users VALUES ('11', 'akun2', '9ce0ca3d09106a37842cfcbfbdf2f60d', 'akun penjahit', '3', 'file_1514370398.jpg');
-INSERT INTO users VALUES ('12', 'akun3', '5f5c57d23f6275a6f15337395a4633e4', 'akun penjual', '5', null);
-INSERT INTO users VALUES ('13', 'test', '322650e1328739dbca646008305dd95e', 'tesrt', '5', null);
+INSERT INTO users VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin lagi 123', '1', null, '2017-12-17');
+INSERT INTO users VALUES ('10', 'akun', '05c0598f35c35762cd7f3801e2388b37', 'akun biasa', '5', null, '2017-12-18');
+INSERT INTO users VALUES ('3', 'disperindag', '80c7888fef32a85d7811ecca03bcbfef', 'disperindag', '2', null, '2017-12-12');
+INSERT INTO users VALUES ('4', 'rahmat', 'af2a4c9d4c4956ec9d6ba62213eed568', 'Rahmat', '5', null, '2017-12-20');
+INSERT INTO users VALUES ('11', 'akun2', '9ce0ca3d09106a37842cfcbfbdf2f60d', 'akun penjahit', '3', 'file_1514710955.PNG', '2017-11-06');
+INSERT INTO users VALUES ('12', 'akun3', '5f5c57d23f6275a6f15337395a4633e4', 'akun penjual', '4', null, '2018-01-02');
+INSERT INTO users VALUES ('13', 'test', '322650e1328739dbca646008305dd95e', 'tesrt', '4', null, '2018-01-02');
+INSERT INTO users VALUES ('14', 'jahit2', 'd0a5bbc9cb65b60c145964d3d1110fa3', 'jahit2', '3', null, '2018-01-02');
+INSERT INTO users VALUES ('15', 'jahit3', '4a4961ab576a40f27b8398d035e55032', 'jahit3', '3', null, '2018-01-09');
+INSERT INTO users VALUES ('16', 'jahit4', '993600cda69b85ee4b18ba7c2d09b79d', 'jahit4', '3', null, '2017-12-12');
+INSERT INTO users VALUES ('17', 'jahit5', '6d662fd3226551385cb1c6c089184c5c', 'jahit5', '3', null, '2017-12-31');
+INSERT INTO users VALUES ('18', 'jahit6', '4101fc46b823d01929e6167ace7f7c93', 'jahit6', '3', null, '2017-12-31');
+INSERT INTO users VALUES ('19', 'jahit7', 'd3840d07684b12ae93a79bd3a1b82bab', 'jahit7', '3', null, '2017-12-28');
+INSERT INTO users VALUES ('20', 'jahit8', '062b236e31c598212cc3b99abea95fdb', 'jahit8', '3', null, '2018-01-01');
+INSERT INTO users VALUES ('21', 'jahit9', '04c21bb4cf891d4c1afd933757b2aee2', 'jahit9', '3', null, '2018-01-02');
+INSERT INTO users VALUES ('22', 'jahit10', '450d11ab662569b1fccb2c535dbedeac', 'jahit10', '3', null, '2018-01-03');
+INSERT INTO users VALUES ('23', 'jahit11', 'ce52c9eb5c97ef020aebb7a1228c0959', 'jahit11', '3', null, '2018-01-03');
+INSERT INTO users VALUES ('24', 'aa', '7815696ecbf1c96e6894b779456d330e', 'aaa', '5', null, '2018-01-03');
